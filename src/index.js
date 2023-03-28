@@ -8,3 +8,11 @@ const btnSearch = searchForm.lastElementChild;
 
 const inputSearch = searchForm.firstElementChild;
 
+const handleFormSubmit = event => {
+    event.preventDefault();
+
+    const seekedPhoto = inputSearch.value;
+    
+}
+
+searchForm.addEventListener('submit', handleFormSubmit);
