@@ -24,9 +24,17 @@ const handleFormSubmit = async (event) => {
     
         const responsePhotos = await fetchPhotos(seekedPhoto);
         const photos = await responsePhotos;
-        console.log(photos);
+        console.log(photos.hits);
+
+        if (photos.hits.length === 0) {
+        emptyArray()
+        }
     
     } catch(error) { console.log(error); }
 }
 
 searchForm.addEventListener('submit', handleFormSubmit);
+
+function emptyArray() {
+    Notify.failure('Sorry, there are no images matching your search query. Please try again.')
+}
