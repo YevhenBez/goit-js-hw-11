@@ -16,14 +16,17 @@ const fetchPhotos = name => fetch(`https://pixabay.com/api/?key=34783600-4c4882f
         return response.json();
     });
 
-const handleFormSubmit = event => {
-    event.preventDefault();
+const handleFormSubmit = async (event) => {
+    try {
+        event.preventDefault();
 
     const seekedPhoto = inputSearch.value;
     
-    fetchPhotos(seekedPhoto).then(response => {
-        console.log(response);
-    }).catch(error => { console.log(error); })
+        const responsePhotos = await fetchPhotos(seekedPhoto);
+        const photos = await responsePhotos;
+        console.log(photos);
+    
+    } catch(error) { console.log(error); }
 }
 
 searchForm.addEventListener('submit', handleFormSubmit);
