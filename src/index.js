@@ -27,16 +27,18 @@ const handleFormSubmit = async (event) => {
     const seekedPhoto = inputSearch.value;
     
         const responsePhotos = await fetchPhotos(seekedPhoto);
-        const photos = await responsePhotos;
-        console.log(photos);
+
+        console.log(responsePhotos);
 
         gallery.innerHTML = ''
-
-        if (photos.hits.length === 0) {
+        
+        // responsePhotos.hits.webformatURL.replace('_640', '_180');
+        
+        if (responsePhotos.hits.length === 0) {
         emptyArray()
         }
 
-        gallery.insertAdjacentHTML('beforeend', renderPhotos(photos))
+        gallery.insertAdjacentHTML('beforeend', renderPhotos(responsePhotos))
     
     } catch(error) { console.log(error); }
 }
@@ -48,7 +50,7 @@ function renderPhotos({ hits }) {
 .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
         return `
         <div class="photo-card">
-            <img src="${largeImageURL}" alt="${tags}" loading="lazy" />
+            <img src="${webformatURL}" alt="${tags}" loading="lazy" />
             <div class="info">
                 <p class="info-item">
                     <b>Likes</b>${likes}
