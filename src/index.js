@@ -10,6 +10,8 @@ const inputSearch = searchForm.firstElementChild;
 
 const gallery = document.querySelector(".gallery");
 
+const btnLoadMore = document.querySelector(".load-more");
+
 const fetchPhotos = name => fetch(`https://pixabay.com/api/?key=34783600-4c4882faf47dfa22b7423406f&q=${name}&image_type=photo&orientation=horizontal&safesearch=true`)
     .then(response => {
         if (!response.ok) {
