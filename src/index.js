@@ -28,6 +28,8 @@ const handleFormSubmit = async (event) => {
         const photos = await responsePhotos;
         console.log(photos);
 
+        gallery.innerHTML = ''
+
         if (photos.hits.length === 0) {
         emptyArray()
         }
