@@ -43,19 +43,22 @@ function renderPhotos({ data }) {
 .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
         return `
         <div class="photo-card">
-            <img src="${webformatURL.replace('_640', '_180')}" alt="${tags}" loading="lazy" width='200px'/>
-            <div class="info">
+            <img class="photo-image" src="${webformatURL.replace('_640', '_180')}" alt="${tags}" loading="lazy" />
+            <div class="info"
                 <p class="info-item">
-                    <b>Likes</b>${likes}
+                    
                 </p>
                 <p class="info-item">
-                    <b>Views</b>${views}
+                    <b>Likes</b><br>${likes}
                 </p>
                 <p class="info-item">
-                    <b>Comments</b>${comments}
+                    <b>Views</b><br>${views}
                 </p>
                 <p class="info-item">
-                    <b>Downloads</b>${downloads}
+                    <b>Comments</b><br>${comments}
+                </p>
+                <p class="info-item">
+                    <b>Downloads</b><br>${downloads}
                 </p>
             </div>
         </div>
