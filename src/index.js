@@ -12,13 +12,7 @@ const gallery = document.querySelector(".gallery");
 
 const btnLoadMore = document.querySelector(".load-more");
 
-const fetchPhotos = name => fetch(`https://pixabay.com/api/?key=34783600-4c4882faf47dfa22b7423406f&q=${name}&image_type=photo&orientation=horizontal&safesearch=true`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(response.status);
-        }
-        return response.json();
-    });
+const fetchPhotos = name => axios.get(`https://pixabay.com/api/?key=34783600-4c4882faf47dfa22b7423406f&q=${name}&image_type=photo&orientation=horizontal&safesearch=true`);
 
 const handleFormSubmit = async (event) => {
     try {
@@ -28,11 +22,11 @@ const handleFormSubmit = async (event) => {
     
         const responsePhotos = await fetchPhotos(seekedPhoto);
 
-        console.log(responsePhotos);
+        console.log(responsePhotos.data.hits);
 
         gallery.innerHTML = ''
                 
-        if (responsePhotos.hits.length === 0) {
+        if (responsePhotos.data.hits.length === 0) {
         emptyArray()
         }
 
@@ -43,12 +37,13 @@ const handleFormSubmit = async (event) => {
 
 searchForm.addEventListener('submit', handleFormSubmit);
 
-function renderPhotos({ hits }) {
-    const markup = hits
+function renderPhotos({ data }) {
+    
+    const markup = data.hits
 .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
         return `
         <div class="photo-card">
-            <img src="${webformatURL.replace('_640', '_180')}" alt="${tags}" loading="lazy" width='400px'/>
+            <img src="${webformatURL.replace('_640', '_180')}" alt="${tags}" loading="lazy" width='200px'/>
             <div class="info">
                 <p class="info-item">
                     <b>Likes</b>${likes}
