@@ -18,8 +18,6 @@ const unsplashApi = new UnsplashAPI();
 
 btnLoadMore.classList.add('is-hidden');
 
-// const fetchPhotos = name => axios.get(`https://pixabay.com/api/?key=34783600-4c4882faf47dfa22b7423406f&q=${name}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`);
-
 const handleFormSubmit = async (event) => {
     event.preventDefault();
 
