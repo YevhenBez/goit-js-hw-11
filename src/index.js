@@ -67,6 +67,7 @@ const handleLoadMoreBtnClick = async (event) => {
         
     if (unsplashApi.page === totalPages) {
         btnLoadMore.classList.add('is-hidden');
+        alertTheEndOfPages();
     }
 
     gallery.insertAdjacentHTML(
@@ -113,6 +114,8 @@ function emptyArray() {
     Notify.failure('Sorry, there are no images matching your search query. Please try again.')
 }
 
-
+function alertTheEndOfPages() {
+    Notify.info("We're sorry, but you've reached the end of search results.")
+}
 
 btnLoadMore.addEventListener('click', handleLoadMoreBtnClick);
