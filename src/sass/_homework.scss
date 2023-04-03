@@ -1,6 +1,8 @@
 :root {
     --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --animation-duration: 250ms;
+    --background-color-form: rgb(11, 11, 145);
+    --background-color-btn-search: green;
 }
 
 .gallery {
@@ -51,4 +53,16 @@
 
 .load-more.is-hidden {
     display: none;
+}
+
+.search-form {
+    padding-top: 10px;
+    padding-left: 370px;
+    padding-bottom: 10px;
+    background-color: var(--background-color-form);
+}
+
+.btn-search {
+    background-color: var(--background-color-btn-search);
+    border-radius: 8px;
 }
