@@ -3,6 +3,7 @@
     --animation-duration: 250ms;
     --background-color-form: rgb(11, 11, 145);
     --background-color-btn-search: green;
+    --background-color-btn-more: rgb(29, 174, 160);
 }
 
 .gallery {
@@ -49,6 +50,9 @@
 
 .load-more {
     margin-top: 100px;
+    margin-left: 480px;
+    background-color: var(--background-color-btn-more);
+    border-radius: 8px;
 }
 
 .load-more.is-hidden {
